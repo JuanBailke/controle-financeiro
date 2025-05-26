@@ -3,6 +3,7 @@ package com.fincontrol.controle_financeiro.services;
 import com.fincontrol.controle_financeiro.models.Usuario;
 import com.fincontrol.controle_financeiro.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,12 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public Usuario registrar(Usuario usuario){
+        System.out.println("Usuario Service iniciado");
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
         return repository.save(usuario);
     }
 

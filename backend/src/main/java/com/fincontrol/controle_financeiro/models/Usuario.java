@@ -29,6 +29,9 @@ public class Usuario implements Serializable {
     @Column(nullable = false)
     private transient String senha;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Transacao> transacoes;
 

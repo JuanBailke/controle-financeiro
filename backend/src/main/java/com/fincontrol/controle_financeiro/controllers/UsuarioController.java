@@ -2,17 +2,16 @@ package com.fincontrol.controle_financeiro.controllers;
 
 import com.fincontrol.controle_financeiro.models.Usuario;
 import com.fincontrol.controle_financeiro.services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
+    @Autowired
     private UsuarioService service;
 
     @GetMapping
@@ -26,7 +25,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<Usuario> insert(Usuario obj){
+    public ResponseEntity<Usuario> insert(@RequestBody Usuario obj){
+        System.out.println("Usuario Controller iniciado");
         return ResponseEntity.ok(service.registrar(obj));
     }
 

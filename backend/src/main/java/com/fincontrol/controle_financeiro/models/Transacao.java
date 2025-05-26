@@ -41,7 +41,4 @@ public class Transacao implements Serializable {
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
-    @ManyToOne
-    @JoinColumn(name = "relatorio_financeiro_id", nullable = false)
-    private RelatorioFinanceiro relatorioFinanceiro;
 }

@@ -19,7 +19,4 @@ public class RelatorioFinanceiro implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @OneToMany(mappedBy = "relatorio_financeiro", cascade = CascadeType.ALL)
-    private List<Transacao> transacoes;
 }
