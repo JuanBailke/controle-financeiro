@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario implements Serializable {
+public class User implements Serializable {
     private static final long serialVersion = 1l;
 
     @Id
@@ -33,6 +33,6 @@ public class Usuario implements Serializable {
     private Role role;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Transacao> transacoes;
+    private List<Transaction> transacoes;
 
 }

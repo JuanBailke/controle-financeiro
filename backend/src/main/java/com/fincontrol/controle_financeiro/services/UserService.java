@@ -19,13 +19,19 @@ public class UsuarioService {
     private BCryptPasswordEncoder passwordEncoder;
 
     public Usuario registrar(Usuario usuario){
-        System.out.println("Usuario Service iniciado");
         usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
         return repository.save(usuario);
     }
 
     public Usuario autenticar(String email, String senha){
-        return repository.findByEmail(email);
+        Optional<Usuario> usuario = repository.findByEmail(email);
+        return usuario.map(u -> {
+            if (passwordEncoder.matches(senha, u.getSenha())) {
+                return u;
+            } else {
+                throw new RuntimeException("Senha incorreta");
+            }
+        }).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
 
     public Usuario findById(Integer id) {

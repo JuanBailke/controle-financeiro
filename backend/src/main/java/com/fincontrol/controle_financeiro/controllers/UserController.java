@@ -26,7 +26,6 @@ public class UsuarioController {
 
     @PostMapping("/registrar")
     public ResponseEntity<Usuario> insert(@RequestBody Usuario obj){
-        System.out.println("Usuario Controller iniciado");
         return ResponseEntity.ok(service.registrar(obj));
     }
 

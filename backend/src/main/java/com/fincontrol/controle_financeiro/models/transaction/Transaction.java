@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 @Entity
 @Table(name = "tb_transacao")
-public class Transacao implements Serializable {
+public class Transaction implements Serializable {
     private static final long serialVersion = 1l;
 
     @Id
@@ -31,14 +31,14 @@ public class Transacao implements Serializable {
     private LocalDate data;
 
     @Enumerated(EnumType.STRING)
-    private TipoTransacao tipoTransacao;
+    private TransactionType transactionType;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
-    private Categoria categoria;
+    private Category category;
 
 }
