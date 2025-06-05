@@ -1,7 +1,6 @@
 package com.fincontrol.controle_financeiro.controllers;
 
-import com.fincontrol.controle_financeiro.models.RelatorioFinanceiro;
-import com.fincontrol.controle_financeiro.services.RelatorioFinanceiroService;
+import com.fincontrol.controle_financeiro.services.FinancialReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/relatorios")
-public class RelatorioFinanceiroController {
+@RequestMapping("/reports")
+public class FinancialReportController {
     @Autowired
-    private RelatorioFinanceiroService service;
+    private FinancialReportService service;
 
-    @GetMapping("/mensal")
-    public ResponseEntity<String> gerarRelatorioMensal(){
-        service.gerarRelatorioMensal();
+    @GetMapping("/monthly")
+    public ResponseEntity<String> generateMonthlyReport(){
+        service.generateMonthlyReport();
         return ResponseEntity.ok("Relatório mensal gerado com sucesso");
     }
 
-    @GetMapping("/anual")
-    public ResponseEntity<String> gerarRelatorioAnual(){
-        service.gerarRelatorioAnual();
+    @GetMapping("/yearly")
+    public ResponseEntity<String> generateAnnualReport(){
+        service.generateAnnualReport();
         return ResponseEntity.ok("Relatório anual gerado com sucesso");
     }
 }

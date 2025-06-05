@@ -1,7 +1,7 @@
-package com.fincontrol.controle_financeiro.models;
+package com.fincontrol.controle_financeiro.models.transaction;
 
 public enum TransactionType {
-    RECEITA,
-    DESPESA;
+    INCOME,
+    EXPENSE;
 
 }

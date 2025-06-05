@@ -1,32 +1,32 @@
 package com.fincontrol.controle_financeiro.services;
 
-import com.fincontrol.controle_financeiro.models.Categoria;
-import com.fincontrol.controle_financeiro.repositories.CategoriaRepository;
+import com.fincontrol.controle_financeiro.models.Category;
+import com.fincontrol.controle_financeiro.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategoriaService {
+public class CategoryService {
 
     @Autowired
-    private CategoriaRepository repository;
+    private CategoryRepository repository;
 
-    public Categoria registrar(Categoria categoria) {
-        return repository.save(categoria);
+    public Category register(Category category) {
+        return repository.save(category);
     }
 
-    public Categoria findById(Integer id) {
+    public Category findById(Integer id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
     }
 
-    public Categoria findByNome(String nome) {
-        return repository.findByNome(nome);
+    public Category findByName(String nome) {
+        return repository.findByName(nome);
     }
 
-    public List<Categoria> findAll() {
+    public List<Category> findAll() {
         return repository.findAll();
     }
 }

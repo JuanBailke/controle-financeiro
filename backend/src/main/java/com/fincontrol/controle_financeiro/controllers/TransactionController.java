@@ -1,7 +1,7 @@
 package com.fincontrol.controle_financeiro.controllers;
 
-import com.fincontrol.controle_financeiro.models.Transacao;
-import com.fincontrol.controle_financeiro.services.TransacaoService;
+import com.fincontrol.controle_financeiro.models.transaction.Transaction;
+import com.fincontrol.controle_financeiro.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/transacoes")
-public class TransacaoController {
+@RequestMapping("/transactions")
+public class TransactionController {
     @Autowired
-    private TransacaoService service;
+    private TransactionService service;
 
-    @GetMapping("/{usuarioId}")
-    public ResponseEntity<List<Transacao>> findByUsuarioId(@PathVariable Integer usuarioId) {
-        return ResponseEntity.ok(service.findByUsuarioId(usuarioId));
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<Transaction>> findByUsuarioId(@PathVariable Integer usuarioId) {
+        return ResponseEntity.ok(service.findByUserId(usuarioId));
     }
 
-    @PostMapping("/registrar")
-    public ResponseEntity<Transacao> registrar(@RequestBody Transacao transacao) {
-        return ResponseEntity.ok(service.registrarTransacao(transacao));
+    @PostMapping("/register")
+    public ResponseEntity<Transaction> register(@RequestBody Transaction transaction) {
+        return ResponseEntity.ok(service.registerTransaction(transaction));
     }
 
 }

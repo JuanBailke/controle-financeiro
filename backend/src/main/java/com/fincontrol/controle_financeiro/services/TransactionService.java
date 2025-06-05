@@ -1,23 +1,23 @@
 package com.fincontrol.controle_financeiro.services;
 
-import com.fincontrol.controle_financeiro.models.Transacao;
-import com.fincontrol.controle_financeiro.repositories.TransacaoRepository;
+import com.fincontrol.controle_financeiro.models.transaction.Transaction;
+import com.fincontrol.controle_financeiro.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class TransacaoService {
+public class TransactionService {
 
     @Autowired
-    private TransacaoRepository repository;
+    private TransactionRepository repository;
 
-    public Transacao registrarTransacao(Transacao transacao){
-        return repository.save(transacao);
+    public Transaction registerTransaction(Transaction transaction){
+        return repository.save(transaction);
     }
 
-    public List<Transacao> findByUsuarioId(Integer usuarioId) {
-        return repository.findByUsuarioId(usuarioId);
+    public List<Transaction> findByUserId(Integer usuarioId) {
+        return repository.findByUserId(usuarioId);
     }
 }

@@ -1,9 +1,9 @@
 package com.fincontrol.controle_financeiro.repositories;
 
-import com.fincontrol.controle_financeiro.models.Categoria;
+import com.fincontrol.controle_financeiro.models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
-    Categoria findByNome(String nome);
+    Category findByName(String name);
 }

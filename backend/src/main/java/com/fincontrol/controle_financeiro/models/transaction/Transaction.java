@@ -1,5 +1,7 @@
-package com.fincontrol.controle_financeiro.models;
+package com.fincontrol.controle_financeiro.models.transaction;
 
+import com.fincontrol.controle_financeiro.models.Category;
+import com.fincontrol.controle_financeiro.models.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_transacao")
+@Table(name = "tb_transaction")
 public class Transaction implements Serializable {
     private static final long serialVersion = 1l;
 
@@ -22,23 +24,23 @@ public class Transaction implements Serializable {
     private Integer id;
 
     @Column(nullable = false)
-    private String descricao;
+    private String description;
 
     @Column(nullable = false)
-    private BigDecimal valor;
+    private BigDecimal value;
 
     @Column(nullable = false)
-    private LocalDate data;
+    private LocalDate date;
 
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
 }

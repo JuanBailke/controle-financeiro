@@ -1,5 +1,6 @@
-package com.fincontrol.controle_financeiro.models;
+package com.fincontrol.controle_financeiro.models.user;
 
+import com.fincontrol.controle_financeiro.models.transaction.Transaction;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tb_user")
 public class User implements Serializable {
     private static final long serialVersion = 1l;
 
@@ -21,18 +22,18 @@ public class User implements Serializable {
     private Integer id;
 
     @Column(nullable = false)
-    private String nome;
+    private String name;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
-    private transient String senha;
+    private String password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Transaction> transacoes;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
 
 }

@@ -1,5 +1,6 @@
 package com.fincontrol.controle_financeiro.models;
 
+import com.fincontrol.controle_financeiro.models.transaction.Transaction;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,8 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_categoria")
-public class Categoria implements Serializable {
+@Table(name = "tb_category")
+public class Category implements Serializable {
     private static final long serialVersion = 1l;
 
     @Id
@@ -21,8 +22,8 @@ public class Categoria implements Serializable {
     private Integer id;
 
     @Column(nullable = false, unique = true)
-    private String nome;
+    private String name;
 
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-    private List<Transacao> transacoes;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
 }

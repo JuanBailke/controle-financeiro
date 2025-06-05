@@ -1,4 +1,4 @@
 package com.fincontrol.controle_financeiro.models.user;
 
-public record UserRequestedDTO() {
+public record UserRequestedDTO(String email, String password) {
 }

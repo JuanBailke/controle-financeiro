@@ -1,11 +1,11 @@
 package com.fincontrol.controle_financeiro.repositories;
 
-import com.fincontrol.controle_financeiro.models.Transacao;
+import com.fincontrol.controle_financeiro.models.transaction.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface TransacaoRepository extends JpaRepository<Transacao, Integer> {
+public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 
-    List<Transacao> findByUsuarioId(Integer usuarioId);
+    List<Transaction> findByUserId(Integer userId);
 }

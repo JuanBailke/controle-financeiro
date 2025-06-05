@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Getter
 @Setter
@@ -12,8 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_relatorio_financeiro")
-public class RelatorioFinanceiro implements Serializable {
+@Table(name = "tb_financial_report")
+public class FinancialReport implements Serializable {
     private static final long serialVersion = 1l;
 
     @Id

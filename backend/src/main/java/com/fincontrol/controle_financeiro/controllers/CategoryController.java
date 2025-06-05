@@ -1,7 +1,7 @@
 package com.fincontrol.controle_financeiro.controllers;
 
-import com.fincontrol.controle_financeiro.models.Categoria;
-import com.fincontrol.controle_financeiro.services.CategoriaService;
+import com.fincontrol.controle_financeiro.models.Category;
+import com.fincontrol.controle_financeiro.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categorias")
-public class CategoriaController {
+@RequestMapping("/categories")
+public class CategoryController {
     @Autowired
-    private CategoriaService service;
+    private CategoryService service;
 
     @GetMapping
-    public ResponseEntity<List<Categoria>> findAll() {
-        List<Categoria> categorias = service.findAll();
-        return ResponseEntity.ok(categorias);
+    public ResponseEntity<List<Category>> findAll() {
+        List<Category> categories = service.findAll();
+        return ResponseEntity.ok(categories);
     }
 
-    @PostMapping("/registrar")
-    public ResponseEntity<Categoria> registrar(Categoria categoria) {
-        return ResponseEntity.ok(service.registrar(categoria));
+    @PostMapping("/register")
+    public ResponseEntity<Category> register(Category category) {
+        return ResponseEntity.ok(service.register(category));
     }
 }
