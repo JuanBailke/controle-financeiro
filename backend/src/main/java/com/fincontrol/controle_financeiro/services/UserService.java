@@ -39,6 +39,11 @@ public class UserService {
         return user.orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
     }
 
+    public Optional<User> findByEmail(String email) {
+        return Optional.ofNullable(repository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado com o email: " + email)));
+    }
+
     public List<User> findAll() {
         return repository.findAll();
     }
