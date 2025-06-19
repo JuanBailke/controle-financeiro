@@ -1,5 +1,6 @@
 package com.fincontrol.controle_financeiro.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fincontrol.controle_financeiro.models.transaction.Transaction;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,6 +25,7 @@ public class Category implements Serializable {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Transaction> transactions;
 }

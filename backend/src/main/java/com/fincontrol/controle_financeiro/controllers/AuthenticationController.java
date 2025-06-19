@@ -1,7 +1,7 @@
 package com.fincontrol.controle_financeiro.controllers;
 
 import com.fincontrol.controle_financeiro.models.user.User;
-import com.fincontrol.controle_financeiro.models.user.UserRequestedDTO;
+import com.fincontrol.controle_financeiro.models.user.UserRequestDTO;
 import com.fincontrol.controle_financeiro.repositories.UserRepository;
 import com.fincontrol.controle_financeiro.security.JwtUtil;
 import jakarta.validation.Valid;
@@ -29,14 +29,14 @@ public class AuthenticationController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody @Valid UserRequestedDTO userRequestedDTO) {
+    public ResponseEntity<?> login(@RequestBody @Valid UserRequestDTO userRequestDTO) {
 
-        Optional<User> usuarioOpt = repository.findByEmail(userRequestedDTO.email());
+        Optional<User> usuarioOpt = repository.findByEmail(userRequestDTO.email());
         if (usuarioOpt.isPresent()){
             User user = usuarioOpt.get();
-            if (passwordEncoder.matches(userRequestedDTO.password(), user.getPassword())) {
-                String accessToken = jwtUtil.generateAccessToken(userRequestedDTO.email());
-                String refreshToken = jwtUtil.generateRefreshToken(userRequestedDTO.email());
+            if (passwordEncoder.matches(userRequestDTO.password(), user.getPassword())) {
+                String accessToken = jwtUtil.generateAccessToken(userRequestDTO.email());
+                String refreshToken = jwtUtil.generateRefreshToken(userRequestDTO.email());
 
                 Map<String, String> tokens = new HashMap<>();
                 tokens.put("accessToken", accessToken);

@@ -29,6 +29,9 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private MyUserDetailsService userDetailsService;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -72,10 +75,11 @@ public class JwtFilter extends OncePerRequestFilter {
         try{
             String email = jwtUtil.extractUsername(token);
             if (email != null && SecurityContextHolder.getContext().getAuthentication() == null){
-                User user = repository.findByEmail(email).orElse(null);
-                if (user != null && jwtUtil.validateToken(token)){
+                MyUserDetails userDetails = (MyUserDetails) userDetailsService.loadUserByUsername(email);
+                //User user = repository.findByEmail(email).orElse(null);
+                if (userDetails != null && jwtUtil.validateToken(token)){
                     UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+                            new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }

@@ -43,7 +43,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> insert(@RequestBody User obj){
-        return ResponseEntity.ok(service.registrar(obj));
+        return ResponseEntity.ok(service.register(obj));
     }
 
 }

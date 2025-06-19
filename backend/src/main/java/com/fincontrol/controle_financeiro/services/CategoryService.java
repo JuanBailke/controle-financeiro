@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -22,7 +23,7 @@ public class CategoryService {
                 .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
     }
 
-    public Category findByName(String nome) {
+    public Optional<Category> findByName(String nome) {
         return repository.findByName(nome);
     }
 

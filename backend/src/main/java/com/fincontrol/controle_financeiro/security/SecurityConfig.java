@@ -33,6 +33,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/users/register").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/users/me").authenticated()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/users/*/transactions").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(customAuthenticationEntryPoint))

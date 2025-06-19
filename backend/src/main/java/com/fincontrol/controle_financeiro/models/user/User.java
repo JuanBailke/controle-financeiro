@@ -1,5 +1,7 @@
 package com.fincontrol.controle_financeiro.models.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fincontrol.controle_financeiro.models.transaction.Transaction;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,12 +29,14 @@ public class User implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Transaction> transactions;
 
