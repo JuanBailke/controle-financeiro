@@ -7,11 +7,11 @@ Este repositório reúne o **backend** em Spring Boot e o **frontend** em Angula
 ## 📂 Estrutura do Projeto
 
 
-├── assets/                   # Recursos estáticos 
+├── assets/                   ` Recursos estáticos `
 
-│   └── Diagrama.png          # Diagrama de Classes
+│   └── Diagrama.png          ` Diagrama de Classes`
 
-├── backend/                  # Projeto Spring Boot 
+├── backend/                  ` Projeto Spring Boot` 
 
 │   ├── src/ 
 
@@ -19,7 +19,7 @@ Este repositório reúne o **backend** em Spring Boot e o **frontend** em Angula
 
 │   └── pom.xml 
 
-├── frontend/                 # Projeto Angular 
+├── frontend/                 ` Projeto Angular `
 
 │   ├── src/ 
 
@@ -27,7 +27,7 @@ Este repositório reúne o **backend** em Spring Boot e o **frontend** em Angula
 
 │   └── package.json
 
-├── .env.example          # Exemplo de variáveis de ambiente 
+├── .env.example          ` Exemplo de variáveis de ambiente `
 
 └── docker-compose.yml 
 
